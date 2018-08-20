@@ -20,7 +20,7 @@ class App extends Component {
 		/*eslint-enable */
 		const attendancePercentage = parseFloat(
 			100 - (bunked / attended) * 100
-		).toFixed(1);
+		).toFixed(2);
 		const classesToAttend = Math.ceil(
 			((attendancePercentage - margin) / 100) * attended
 		);
@@ -36,6 +36,9 @@ class App extends Component {
 			if (this.state.classesToAttend <= -1) {
 				content = (
 					<div className="message">
+						<div>
+							<i class="material-icons">warning</i>
+						</div>
 						<span role="img" aria-label="sad">
 							😵
 						</span>{" "}
@@ -100,7 +103,7 @@ class App extends Component {
 						name="margin"
 					/>
 					<button className="button raised" type="submit">
-						Calculate
+						evaluate
 					</button>
 
 					{content}
