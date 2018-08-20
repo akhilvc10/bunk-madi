@@ -1,21 +1,33 @@
 body {
 	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+div.app {
+	height: 100vh;
 	padding: 10px 50px 50px 50px;
 
 	user-select: none;
 	font-family: "Basic", sans-serif;
-	box-sizing: border-box;
-	background: #43cea2; /* fallback for old browsers */
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#48c6ef+0,6f86d6+99 */
+	background: #48c6ef; /* Old browsers */
+	background: -moz-linear-gradient(
+		-45deg,
+		#48c6ef 0%,
+		#6f86d6 99%
+	); /* FF3.6-15 */
 	background: -webkit-linear-gradient(
-		to bottom,
-		#185a9d,
-		#43cea2
-	); /* Chrome 10-25, Safari 5.1-6 */
+		-45deg,
+		#48c6ef 0%,
+		#6f86d6 99%
+	); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(
-		to bottom,
-		#185a9d,
-		#43cea2
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		135deg,
+		#48c6ef 0%,
+		#6f86d6 99%
+	); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48c6ef', endColorstr='#6f86d6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 input,
@@ -46,11 +58,12 @@ button {
 	width: 100%;
 	padding: 10px;
 	color: rgba(255, 255, 255, 0.9);
-	border: 2px solid rgba(255, 255, 255, 0.6);
+	border: 3px solid rgba(255, 255, 255, 0.6);
 }
 h1 {
 	color: rgba(255, 255, 255, 0.7);
 	padding: 20px;
+	font-size: 40px;
 }
 
 ::-webkit-input-placeholder {

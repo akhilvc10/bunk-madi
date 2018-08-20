@@ -67,7 +67,7 @@ class App extends Component {
 		}
 
 		return (
-			<div className="App">
+			<div className="app">
 				<form onSubmit={this.getAttendance}>
 					<h1>Bunk Māḍi !</h1>
 
