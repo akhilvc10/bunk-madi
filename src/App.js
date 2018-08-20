@@ -99,7 +99,9 @@ class App extends Component {
 						ref={this.marginRef}
 						name="margin"
 					/>
-					<button type="submit">Calculate</button>
+					<button className="button raised" type="submit">
+						Calculate
+					</button>
 
 					{content}
 				</form>
