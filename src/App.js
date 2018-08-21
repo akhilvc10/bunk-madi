@@ -63,7 +63,7 @@ class App extends Component {
 					</div>
 				);
 			} else if (this.state.classesToAttend === 0) {
-				content = <div className="message">Oh !!! Lucky AF !</div>;
+				content = <div className="message">You have 75%. Lucky AF !</div>;
 			} else {
 				return;
 			}
