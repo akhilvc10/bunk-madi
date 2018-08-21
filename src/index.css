@@ -2,34 +2,15 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	background: #1e3c72;
+	height: 100vh;
 }
 
 div.app {
 	height: 100vh;
 	padding: 10px 50px 50px 50px;
-
 	user-select: none;
 	font-family: "Basic", sans-serif;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#48c6ef+0,6f86d6+99 */
-	background: #48c6ef; /* Old browsers */
-	background: -moz-linear-gradient(
-		-45deg,
-		#48c6ef 0%,
-		#6f86d6 99%
-	); /* FF3.6-15 */
-	background: -webkit-linear-gradient(
-		-45deg,
-		#48c6ef 0%,
-		#6f86d6 99%
-	); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(
-		135deg,
-		#48c6ef 0%,
-		#6f86d6 99%
-	); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48c6ef', endColorstr='#6f86d6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-	/* animation: colorchange 60s infinite alternate;
-	-webkit-animation: colorchange 60s alternate; Chrome and Safari */
 	animation-name: colorchange;
 	animation-duration: 60s;
 	animation-timing-function: ease-in-out;
@@ -40,6 +21,7 @@ div.app {
 input,
 button {
 	outline: none;
+	max-width: 300px;
 	width: 100%;
 	border: none;
 	color: white;
@@ -69,8 +51,7 @@ h1 {
 	margin-top: 10px;
 	cursor: pointer;
 	height: 55px;
-	min-width: 50%;
-	max-width: 60%;
+	max-width: 150px;
 	padding: 10px;
 	color: rgba(255, 255, 255, 0.9);
 	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -106,10 +87,9 @@ div.message {
 	background: rgba(255, 255, 255, 0.4);
 	color: white;
 	font-size: 18px;
-	padding: 5px;
 	margin: 10px;
 	text-align: center;
-	padding: 10px 10px;
+	padding: 20px 10px;
 	border-radius: 5px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 	animation: message 0.5s ease-in-out;

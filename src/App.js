@@ -4,8 +4,9 @@ import "./App.css";
 class App extends Component {
 	state = {
 		attendencePercent: " ",
-		classesToAttend: "",
-		criteria: ""
+		classesToAttend: " ",
+		criteria: " ",
+		lecturesHeld: " "
 	};
 
 	lecturesHeldRef = React.createRef();
@@ -17,6 +18,11 @@ class App extends Component {
 		/*eslint-disable */
 
 		const lecturesHeld = parseInt(this.lecturesHeldRef.current.value);
+		if (lecturesHeld === 0) {
+			this.setState({
+				lecturesHeld: 0
+			});
+		}
 		const bunked = parseInt(this.bunkedRef.current.value);
 		const criteria = parseInt(this.marginRef.current.value);
 		const lecturesAttended = parseInt(lecturesHeld - bunked);
@@ -30,17 +36,36 @@ class App extends Component {
 		this.setState({
 			attendencePercent,
 			classesToAttend,
-			criteria
+			criteria,
+			lecturesHeld
 		});
 	};
 
 	render() {
 		let content;
+		const {
+			attendencePercent,
+			classesToAttend,
+			criteria,
+			lecturesAttended,
+			lecturesHeld
+		} = this.state;
 
-		if (this.state.classesToAttend > 0) {
+		if (lecturesHeld === 0) {
+			content = (
+				<div className="message">
+					<span role="img" aria-label="laugh">
+						🤣
+					</span>{" "}
+					Are You Crazy ?
+				</div>
+			);
+		}
+
+		if (classesToAttend > 0) {
 			if (
-				this.state.lecturesAttended === this.state.lecturesHeld ||
-				this.state.criteria !== 100
+				(lecturesHeld !== 0 && lecturesAttended === lecturesHeld) ||
+				criteria !== 100
 			) {
 				content = (
 					<div className="message">
@@ -50,35 +75,34 @@ class App extends Component {
 						<span role="img" aria-label="sad">
 							😵
 						</span>{" "}
-						You have only{" "}
-						<b className="element"> {this.state.attendencePercent}%</b> of
+						You have only <b className="element"> {attendencePercent}%</b> of
 						attendance and You should attend next{" "}
-						<b className="element">{this.state.classesToAttend + 1}</b> lectures
-						to maintain the min attendance.
+						<b className="element">{classesToAttend + 1}</b> lectures to
+						maintain the min attendance.
 					</div>
 				);
 			}
 		}
-		if (this.state.classesToAttend <= -1) {
-			const check = this.state.criteria / (100 - this.state.criteria);
+		if (classesToAttend <= -1) {
+			const check = criteria / (100 - criteria);
 			/*eslint-disable */
-			const lectBunked = parseInt((-1 * this.state.classesToAttend) / check);
+			const lectBunked = parseInt((-1 * classesToAttend) / check);
 			/*eslint-enable */
 			content = (
 				<div className="message">
 					<span role="img" aria-label="happy">
 						😁
 					</span>{" "}
-					You have <b className="element">{this.state.attendencePercent}%</b> of
+					You have <b className="element">{attendencePercent}%</b> of
 					attendance. You can bunk <b className="element">{lectBunked}</b> more
 					lectures. Enjoy !
 				</div>
 			);
 		}
-		if (this.state.classesToAttend === 0) {
+		if (classesToAttend === 0) {
 			content = (
 				<div className="message">
-					You have {this.state.attendencePercent}% of Attendace. Lucky AF !
+					You have {attendencePercent}% of Attendace. Lucky AF !
 				</div>
 			);
 		}
