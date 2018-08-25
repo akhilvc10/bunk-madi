@@ -6,7 +6,8 @@ class App extends Component {
 		attendencePercent: " ",
 		classesToAttend: " ",
 		criteria: " ",
-		lecturesHeld: " "
+		lecturesHeld: " ",
+		bunkedLectures: " "
 	};
 
 	lecturesHeldRef = React.createRef();
@@ -29,15 +30,17 @@ class App extends Component {
 		const attendencePercent = parseFloat(
 			((lecturesAttended * 100) / lecturesHeld).toFixed(2)
 		);
-		const classesToAttend =
-			(criteria * lecturesHeld - lecturesAttended * 100) / (100 - criteria);
+		const classesToAttend = parseInt(
+			(criteria * lecturesHeld - lecturesAttended * 100) / (100 - criteria)
+		);
 		/*eslint-enable */
 
 		this.setState({
 			attendencePercent,
-			classesToAttend,
 			criteria,
-			lecturesHeld
+			lecturesHeld,
+			classesToAttend,
+			bunkedLectures: bunked
 		});
 	};
 
@@ -47,41 +50,37 @@ class App extends Component {
 			attendencePercent,
 			classesToAttend,
 			criteria,
-			lecturesAttended,
-			lecturesHeld
+			lecturesHeld,
+			bunkedLectures
 		} = this.state;
 
-		if (lecturesHeld === 0) {
+		if (bunkedLectures > lecturesHeld) {
 			content = (
 				<div className="message">
 					<span role="img" aria-label="laugh">
 						🤣
 					</span>{" "}
-					Are You Crazy ?
+					Are You Crazy ? Total lectures held must be more than bunked lectures
+					!
 				</div>
 			);
 		}
 
-		if (classesToAttend > 0) {
-			if (
-				(lecturesHeld !== 0 && lecturesAttended === lecturesHeld) ||
-				criteria !== 100
-			) {
-				content = (
-					<div className="message">
-						<div>
-							<i className="material-icons">warning</i>
-						</div>
-						<span role="img" aria-label="sad">
-							😵
-						</span>{" "}
-						You have only <b className="element"> {attendencePercent}%</b> of
-						attendance and You should attend next{" "}
-						<b className="element">{classesToAttend + 1}</b> lectures to
-						maintain the min attendance.
+		if (classesToAttend > 0 && bunkedLectures <= lecturesHeld) {
+			content = (
+				<div className="message">
+					<div>
+						<i className="material-icons">warning</i>
 					</div>
-				);
-			}
+					<span role="img" aria-label="sad">
+						😵
+					</span>{" "}
+					You have only <b className="element"> {attendencePercent}%</b> of
+					attendance and You must attend next{" "}
+					<b className="element">{classesToAttend + 1} lectures</b> to maintain
+					the min of {criteria}% attendance.
+				</div>
+			);
 		}
 		if (classesToAttend <= -1) {
 			const check = criteria / (100 - criteria);
@@ -94,8 +93,8 @@ class App extends Component {
 						😁
 					</span>{" "}
 					You have <b className="element">{attendencePercent}%</b> of
-					attendance. You can bunk <b className="element">{lectBunked}</b> more
-					lectures. Enjoy !
+					attendance. You can bunk{" "}
+					<b className="element">{lectBunked} lectures</b> more. Enjoy !
 				</div>
 			);
 		}
