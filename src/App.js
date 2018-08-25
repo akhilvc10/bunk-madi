@@ -102,7 +102,8 @@ class App extends Component {
 		if (classesToAttend === 0) {
 			content = (
 				<div className="message">
-					You have {attendencePercent}% of Attendace. Lucky AF !
+					You have <b className="element">{attendencePercent}%</b> of
+					Attendance. Lucky AF !
 				</div>
 			);
 		}
