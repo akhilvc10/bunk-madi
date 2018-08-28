@@ -7,6 +7,10 @@ body {
 }
 
 div.app {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	height: 100vh;
 	padding: 10px 50px 50px 50px;
 	user-select: none;
@@ -41,7 +45,7 @@ form {
 
 h1 {
 	color: rgba(255, 255, 255, 0.7);
-	padding: 15px;
+	padding: 10px;
 	font-size: 40px;
 }
 
@@ -81,6 +85,10 @@ h1 {
 :-moz-placeholder {
 	/* Firefox 18- */
 	color: rgba(255, 255, 255, 0.6);
+}
+
+.title {
+	font-family: "Jua";
 }
 
 div.message {

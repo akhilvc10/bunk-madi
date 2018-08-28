@@ -110,7 +110,7 @@ class App extends Component {
 		return (
 			<div className="app">
 				<form onSubmit={this.getAttendance}>
-					<h1>Bunk Māḍi !</h1>
+					<h1 className="title">Bunk Māḍi !</h1>
 
 					<input
 						placeholder="Total Lectures Held"
