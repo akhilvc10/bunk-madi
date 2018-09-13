@@ -87,8 +87,20 @@ class App extends Component {
 		if (criteria >= 100) {
 			content = <div className="message">Min % should be less than 100</div>;
 		}
+		if (lecturesAttended > lecturesHeld) {
+			content = (
+				<div className="message">
+					<span role="img" aria-label="laugh">
+						🤣
+					</span>{" "}
+					Are You Crazy ? Total lectures held must be more than attended lectures
+					!
+				</div>
+			);
+		}
 
-		if (bunkedLectures > lecturesHeld || lecturesAttended > lecturesHeld) {
+
+		if (bunkedLectures > lecturesHeld || ) {
 			content = (
 				<div className="message">
 					<span role="img" aria-label="laugh">
