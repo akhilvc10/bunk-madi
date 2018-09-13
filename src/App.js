@@ -9,7 +9,8 @@ class App extends Component {
 		lecturesHeld: " ",
 		bunkedLectures: " ",
 		checkInput: false,
-		optionalValue: ""
+		optionalValue: "",
+		lecturesAttended: ""
 	};
 
 	lecturesHeldRef = React.createRef();
@@ -66,7 +67,8 @@ class App extends Component {
 				attendencePercent,
 				criteria,
 				lecturesHeld,
-				classesToAttend
+				classesToAttend,
+				lecturesAttended
 			});
 		}
 	};
@@ -78,14 +80,15 @@ class App extends Component {
 			classesToAttend,
 			criteria,
 			lecturesHeld,
-			bunkedLectures
+			bunkedLectures,
+			lecturesAttended
 		} = this.state;
 
 		if (criteria >= 100) {
 			content = <div className="message">Min % should be less than 100</div>;
 		}
 
-		if (bunkedLectures > lecturesHeld) {
+		if (bunkedLectures > lecturesHeld || lecturesAttended > lecturesHeld) {
 			content = (
 				<div className="message">
 					<span role="img" aria-label="laugh">
