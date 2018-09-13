@@ -93,14 +93,13 @@ class App extends Component {
 					<span role="img" aria-label="laugh">
 						🤣
 					</span>{" "}
-					Are You Crazy ? Total lectures held must be more than attended lectures
-					!
+					Are You Crazy ? Total lectures held must be more than attended
+					lectures !
 				</div>
 			);
 		}
 
-
-		if (bunkedLectures > lecturesHeld || ) {
+		if (bunkedLectures > lecturesHeld) {
 			content = (
 				<div className="message">
 					<span role="img" aria-label="laugh">
