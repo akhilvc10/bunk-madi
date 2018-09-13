@@ -8,8 +8,7 @@ class App extends Component {
 		criteria: " ",
 		lecturesHeld: " ",
 		bunkedLectures: " ",
-		checkInput: false,
-		optionalValue: ""
+		checkInput: false
 	};
 
 	lecturesHeldRef = React.createRef();
@@ -81,10 +80,6 @@ class App extends Component {
 			bunkedLectures
 		} = this.state;
 
-		if (criteria >= 100) {
-			content = <div className="message">Min % should be less than 100</div>;
-		}
-
 		if (bunkedLectures > lecturesHeld) {
 			content = (
 				<div className="message">
@@ -139,11 +134,10 @@ class App extends Component {
 		}
 
 		return (
-			<form className="container" onSubmit={this.getAttendance}>
-				<div className="titleItem">
+			<div className="container">
+				<form onSubmit={this.getAttendance}>
 					<h1 className="title">Bunk Māḍi !</h1>
-				</div>
-				<div className="inputItems">
+
 					<input
 						className="inputStyle"
 						placeholder="Total Lectures Held"
@@ -154,75 +148,67 @@ class App extends Component {
 						ref={this.lecturesHeldRef}
 						name="lecturesheld"
 					/>
-				</div>
-				<div className="optionalButtonContainer">
-					<button
-						style={
-							this.state.checkInput
-								? {
-										border: "none",
-										transform: "scale(.9)",
-										opacity: 0.7
-								  }
-								: {
-										fontWeight: "bold"
-								  }
-						}
-						className="optionalButton1"
-						type="button"
-						onClick={() =>
-							this.setState({ checkInput: false, bunkedLectures: "" })
-						}>
-						Att. Lect.
-					</button>
-					<button
-						style={
-							this.state.checkInput
-								? {
-										fontWeight: "bold"
-								  }
-								: {
-										border: "none",
-										transform: "scale(.9)",
-										opacity: 0.7
-								  }
-						}
-						className="optionalButton2"
-						type="button"
-						onClick={() =>
-							this.setState({ checkInput: true, optionalValue: "" })
-						}>
-						Bunk. Lect.
-					</button>
-
-					<div className="optionalInputItems">
-						{this.state.checkInput ? (
-							<input
-								className="optionalInput"
-								placeholder="Bunked Lectures"
-								type="number"
-								pattern="[0-9]*"
-								inputMode="numeric"
-								required
-								ref={this.bunkedRef}
-								name="bunked"
-							/>
-						) : (
-							<input
-								className="optionalInput"
-								placeholder="Attended Lectures"
-								type="number"
-								pattern="[0-9]*"
-								inputMode="numeric"
-								required
-								ref={this.attendedRef}
-								name="attended"
-							/>
-						)}
+					<div className="fullContainer">
+						<div className="buttonItems">
+							<button
+								style={
+									this.state.checkInput
+										? {
+												border: "1px solid rgba(255, 255, 255, 0.9)",
+												boxShadow: "0 8px 20px 0 rgba(0, 0, 0, 0.1)"
+										  }
+										: { border: "none" }
+								}
+								className="optionalButton"
+								type="button"
+								onClick={() => this.setState({ checkInput: true })}>
+								BL
+							</button>
+							<button
+								style={
+									this.state.checkInput
+										? { border: "none" }
+										: {
+												border: "1px solid rgba(255, 255, 255, 0.9)",
+												boxShadow: "0 8px 20px 0 rgba(0, 0, 0, 0.1)"
+										  }
+								}
+								className="optionalButton"
+								type="button"
+								onClick={() =>
+									this.setState({ checkInput: false, bunkedLectures: "" })
+								}>
+								AL
+							</button>
+						</div>
+						<div className="inputItems">
+							{this.state.checkInput ? (
+								<input
+									className="optionalInput"
+									placeholder="Bunked Lectures"
+									type="number"
+									pattern="[0-9]*"
+									inputMode="numeric"
+									required
+									ref={this.bunkedRef}
+									name="bunked"
+								/>
+							) : (
+								<input
+									className="optionalInput"
+									placeholder="Attended Lectures"
+									type="number"
+									pattern="[0-9]*"
+									inputMode="numeric"
+									required
+									ref={this.attendedRef}
+									name="attended"
+								/>
+							)}
+						</div>
 					</div>
-				</div>
-				<div className="inputItems">
 					<input
+						style={{ marginTop: 20 }}
 						className="inputStyle"
 						placeholder="Min %"
 						type="number"
@@ -233,18 +219,13 @@ class App extends Component {
 						ref={this.marginRef}
 						name="margin"
 					/>
-				</div>
-				<div className="buttonItems">
-					<button
-						style={{ margin: "20px" }}
-						className="button raised buttonStyle"
-						type="submit">
+					<button className="button raised buttonStyle" type="submit">
 						evaluate
 					</button>
-				</div>
 
-				{content}
-			</form>
+					{content}
+				</form>
+			</div>
 		);
 	}
 }
