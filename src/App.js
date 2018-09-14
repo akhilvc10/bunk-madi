@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 
 class App extends Component {
 	state = {
@@ -9,7 +8,6 @@ class App extends Component {
 		lecturesHeld: " ",
 		bunkedLectures: " ",
 		checkInput: false,
-		optionalValue: "",
 		lecturesAttended: ""
 	};
 
@@ -175,7 +173,7 @@ class App extends Component {
 							this.state.checkInput
 								? {
 										border: "none",
-										transform: "scale(.9)",
+										transform: "translateX(-0.8px) translateY(-2px) scale(.9)",
 										opacity: 0.7
 								  }
 								: {
@@ -197,15 +195,13 @@ class App extends Component {
 								  }
 								: {
 										border: "none",
-										transform: "scale(.9)",
+										transform: "translateX(-0.8px) translateY(-2px) scale(.9)",
 										opacity: 0.7
 								  }
 						}
 						className="optionalButton2"
 						type="button"
-						onClick={() =>
-							this.setState({ checkInput: true, optionalValue: "" })
-						}>
+						onClick={() => this.setState({ checkInput: true })}>
 						Bunk. Lect.
 					</button>
 
